@@ -1,0 +1,21 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane fx:controller="sample.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="433.0"
+            prefWidth="514.0" xmlns:fx="http://javafx.com/fxml">
+
+    <VBox fx:id="sudokuGrid" prefHeight="500" prefWidth="400">
+
+    </VBox>
+
+
+    <Button fx:id="sudokuSample" text="Load Sudoku Sample" onAction="#handleButtonSudokuSample"></Button>
+
+
+    <!--    <HBox>
+            <Button fx:id="button1" onAction="#handleButtonAction1"></Button>
+        </HBox>-->
+</AnchorPane>
