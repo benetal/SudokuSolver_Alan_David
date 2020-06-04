@@ -39,20 +39,18 @@ public class Controller {
 //        sudokuSample.this.getGrid();
     }
 
-/*
-    public void solveSudoku(ActionEvent actionEvent) throws IOException, URISyntaxException {
-        System.out.println("hallo");
-        Scene scene = sudokuSample.getScene();
-        Parent root = getGrid();
-        scene.setRoot(root);
-//        sudokuSample.this.getGrid();
-    }
-
-    private void changeScene(Pane pane) {
-        Scene scene = new Scene(pane);
-        Main.getPrimaryStage().setScene(new Scene(pane, 600, 450));
-    }
-*/
+//    public void solveSudoku(ActionEvent actionEvent) throws IOException, URISyntaxException {
+//        System.out.println("hallo");
+//        Scene scene = sudokuSample.getScene();
+//        Parent root = getGrid();
+//        scene.setRoot(root);
+////        sudokuSample.this.getGrid();
+//    }
+//
+//    private void changeScene(Pane pane) {
+//        Scene scene = new Scene(pane);
+//        Main.getPrimaryStage().setScene(new Scene(pane, 600, 450));
+//    }
 
 
     public Pane getGrid() throws URISyntaxException, IOException {
@@ -110,8 +108,32 @@ public class Controller {
                     }
                 }
 
-                Sudoku sudoku = new Sudoku(sudokuArrayToSolve);
-                int[][] solvedSudoku = sudoku.getSolved();
+//                Sudoku sudoku = new Sudoku(sudokuArrayToSolve);
+//                int[][] solvedSudoku = sudoku.getSolved();
+
+                Solver davidSolver = new Solver(sudokuArrayToSolve);
+                int [][] solvedSudoku = new int[0][];
+                try {
+                    solvedSudoku = davidSolver.returnSolvedSudoku();
+                    System.out.println("solver is done ,"+davidSolver.isPossible);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+//                Solver sudokuSolver = new Solver(sudokuArrayToSolve);
+//                try {
+//                    sudokuSolver.startSolving();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                int[][] solvedSudoku = new int[0][];
+//                try {
+//                    solvedSudoku = sudokuSolver.returnSolvedSudoku();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+
 
                 if (solvedSudoku == null) {
                         Button button = (Button)actionEvent.getSource();
