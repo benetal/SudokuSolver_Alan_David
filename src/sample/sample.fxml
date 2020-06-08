@@ -1,21 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.Cursor?>
+<BorderPane styleClass="borderPane" fx:id="borderpan" maxHeight="1000.0" maxWidth="1000.0" minHeight="0" minWidth="0" prefHeight="670.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <top>
+              <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0" minWidth="0" BorderPane.alignment="CENTER">
+                  <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                          <items>
+                              <MenuItem mnemonicParsing="false" onAction="#handleOpenAction" text="Open" />
+                          </items>
+                      </Menu>
+                  </menus>
+              </MenuBar>
+        <!--<Text text="Sudoku Solver Project" textAlignment="CENTER" wrappingWidth="750.81640625" />-->
 
-<AnchorPane fx:controller="sample.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="433.0"
-            prefWidth="514.0" xmlns:fx="http://javafx.com/fxml">
-
-    <VBox fx:id="sudokuGrid" prefHeight="500" prefWidth="400">
-
-    </VBox>
+    </top>
+    <bottom>
+        <HBox alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleLoadAction" text="Load" prefWidth="50" prefHeight="50"/>
 
 
-    <Button fx:id="sudokuSample" text="Load Sudoku Sample" onAction="#handleButtonSudokuSample"></Button>
+                <Button fx:id="solveButton" disable="true" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleSolveAction" text="Solve" prefWidth="50" prefHeight="50"/>
 
-
-    <!--    <HBox>
-            <Button fx:id="button1" onAction="#handleButtonAction1"></Button>
-        </HBox>-->
-</AnchorPane>
+            </children>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+        </HBox>
+    </bottom>
+</BorderPane>
