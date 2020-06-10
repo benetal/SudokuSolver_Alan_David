@@ -1,0 +1,44 @@
+.borderPane {
+    -fx-background-color:white ;
+    -fx-pref-height: 670;
+    -fx-pref-width: 750;
+
+}
+
+.hbox {
+
+    -fx-background-color:white;
+    -fx-min-height: 0;
+    -fx-min-width: 0;
+    -fx-pref-width: 200;
+    -fx-pref-height: 100;
+    -fx-spacing: 50;
+    -fx-alignment: CENTER;
+
+}
+
+.anchorPane {
+    -fx-background-color:white;
+    -fx-pref-height: 433;
+    -fx-pref-width: 514;
+
+}
+
+.text-field {
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+
+}
+
+.pane {
+    -fx-background-color:#708090;
+    -fx-pref-height: 433;
+    -fx-pref-width: 514;
+}
+
+.button {
+    -fx-pref-height: 75;
+    -fx-pref-width: 100;
+    -fx-alignment: CENTER;
+    -fx-content-display: CENTER;
+}

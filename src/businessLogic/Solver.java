@@ -1,4 +1,4 @@
-package sample;
+package businessLogic;
 
 public class Solver {
     public int row = 0;
@@ -42,7 +42,7 @@ public class Solver {
                     attemptingToSolveArray[row][column] = i + 1;
                     SearchForNumbersMethods(new int[]{0, 0, 1, 0, 1, 0, 0, 1, 1, 1});
                     startSolving();
-                } else if (i == 9){ // if we cant fit a number then go to last Array and set Number to zero
+                } else if (i == 9) { // if we cant fit a number then go to last Array and set Number to zero
                     row = rowSolver;
                     column = columnSolver;
                     attemptingToSolveArray[rowSolver][columnSolver] = 0;

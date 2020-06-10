@@ -1,4 +1,4 @@
-package sample;
+package businessLogic;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,14 +9,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 public class Main extends Application {
 
 
     private static Stage primaryStage = null;
 
-    /*private static Stage primaryStage;*/
+
     private static BorderPane rootLayout;
-    /*private Sudoku sudoku = new Sudoku();*/
 
 
     @Override
@@ -32,7 +32,7 @@ public class Main extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("sample.fxml"));
+            loader.setLocation(Main.class.getResource("../layouts/rootLayout.fxml"));
             rootLayout = loader.load();
 
             // Show the scene containing the root layout.
@@ -45,23 +45,4 @@ public class Main extends Application {
     }
 
 
-/*
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-    }
-*/
-
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-
-    public static Stage getPrimaryStage() {
-        return primaryStage;
-    }
 }

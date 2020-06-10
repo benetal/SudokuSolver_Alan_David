@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane styleClass="borderPane" fx:id="borderPane"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="businessLogic.Controller"
+            stylesheets="@../resources/stylesheet.css">
+
+    <bottom>
+        <HBox styleClass="hbox" BorderPane.alignment="CENTER">
+            <children>
+
+
+                <Button onAction="#loadFirstSudoku" text="LoadFirst"/>
+
+                <Button onAction="#loadSecondSudoku" text="LoadSecond"/>
+
+
+                <Button fx:id="solveButton" disable="true" onAction="#handleSolveAction" text="Solve"/>
+
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>
