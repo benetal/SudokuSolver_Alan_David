@@ -36,10 +36,19 @@ public class Controller {
 
 
     @FXML
-    public void handleLoadAction() throws IOException, URISyntaxException {
+    public void loadFirstSudoku() throws IOException, URISyntaxException {
 
         AddScene("9x9.fxml");
-        getSudokuArray();
+        getFirstSudokuArray();
+        solveButton.setDisable(false);
+
+    }
+
+    @FXML
+    public void loadSecondSudoku() throws IOException, URISyntaxException {
+
+        AddScene("9x9.fxml");
+        getSecondSudokuArray();
         solveButton.setDisable(false);
 
     }
@@ -180,10 +189,11 @@ public class Controller {
 
         /*int[][] currentSudoku = new int[9][9];*/
 
-        int row = 0, column = 0;
-        for (Node node3 : getPane().getChildren()) {
-            if (node3 instanceof TextField) {
-                currentSudoku[row][column] = Integer.parseInt(((TextField) node3).getText());
+        int row = 0;
+        int column = 0;
+        for (Node existingGrid : getPane().getChildren()) {
+            if (existingGrid instanceof TextField) {
+                currentSudoku[row][column] = Integer.parseInt(((TextField) existingGrid).getText());
                 column++;
                 if (column == 9) {
                     row++;
@@ -216,12 +226,13 @@ public class Controller {
         }
     }
 
-    public void getSudokuArray() throws URISyntaxException, IOException {
+    public void getFirstSudokuArray() throws URISyntaxException, IOException {
 
         JSONObject json = new JSONObject(Files.readString(Paths.get(getClass().getResource("sudoku.json").toURI())));
         JSONArray sudokuMap = json.getJSONArray("sudokuMap");
 
-        int row = 0, column = 0;
+        int row = 0;
+        int column = 0;
         for (Node gridToFill : getPane().getChildren()) {
             if (gridToFill instanceof TextField) {
                 ((TextField) gridToFill).setText(String.valueOf(sudokuMap.getJSONArray(row).getInt(column)));
@@ -238,5 +249,32 @@ public class Controller {
 
 
     }
+
+    public void getSecondSudokuArray() throws URISyntaxException, IOException {
+
+        JSONObject json = new JSONObject(Files.readString(Paths.get(getClass().getResource("sudoku.json").toURI())));
+        JSONArray sudokuMap2 = json.getJSONArray("sudokuMap2");
+
+        int row = 0;
+        int column = 0;
+
+        for (Node gridToFill : getPane().getChildren()) {
+            if (gridToFill instanceof TextField) {
+                ((TextField) gridToFill).setText(String.valueOf(sudokuMap2.getJSONArray(row).getInt(column)));
+                column++;
+                if (column == 9) {
+                    row++;
+                    column = 0;
+                }
+
+            }
+
+
+        }
+
+
+    }
+
+
 
 }

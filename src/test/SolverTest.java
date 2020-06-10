@@ -18,7 +18,6 @@ class SolverTest {
 
 
 
-
     }
 
 
@@ -36,7 +35,8 @@ class SolverTest {
 
     @Test
     void searchForNumbersMethods() {
-        Solver testSolver = new Solver();
+
+
 
     }
 
