@@ -15,8 +15,13 @@ public class Solver {
         attemptingToSolveArray = sudokuArrayToSolve;
     }
 
+    public Solver() {
+
+    }
+
+
     //return solved Sudoku Method
-    public int[][] returnSolvedSudoku() throws Exception {
+    public int[][] returnSolvedSudoku() {
         startSolving();
         return solvedArray;
     }
@@ -29,13 +34,13 @@ public class Solver {
         SearchForEmptyNumberInArray();
         if (isANumberZero) {
             possibleNumbers = possibleNumbersWhileSolving;
-            possibleNumbersWhileSolving = SearchForNumbersMethods();
+            possibleNumbersWhileSolving = SearchForNumbersMethods(new int[]{0, 0, 1, 0, 1, 0, 0, 1, 1, 1});
             for (int i = 0; i < 10; i++) {
                 if (!isANumberZero) {
                     solvedArray = attemptingToSolveArray;
                 } else if (possibleNumbersWhileSolving[i] == 0) { //put a valid number in empty Array
                     attemptingToSolveArray[row][column] = i + 1;
-                    SearchForNumbersMethods();
+                    SearchForNumbersMethods(new int[]{0, 0, 1, 0, 1, 0, 0, 1, 1, 1});
                     startSolving();
                 } else if (i == 9){ // if we cant fit a number then go to last Array and set Number to zero
                     row = rowSolver;
@@ -71,9 +76,9 @@ public class Solver {
 
 
     //the following three methods in SearchForNumberMethods do the same thing as in real life we search in row/column and 3by3 grid for (a) possible number(s)
-    public int[] SearchForNumbersMethods() {
+    public int[] SearchForNumbersMethods(int[] ints) {
         possibleNumbers = SearchForPossibleNumbersInRow(possibleNumbers);
-        possibleNumbers = SearchForPossibleNumbersInColumn(possibleNumbers);
+        possibleNumbers = searchForPossibleNumbersInColumn(possibleNumbers);
         possibleNumbers = searchForPossibleNumbersInThreeByThree(getThreeByThree(row), getThreeByThree(column), possibleNumbers);
         return possibleNumbers;
     }
@@ -91,7 +96,7 @@ public class Solver {
         return possibleNumbers;
     }
 
-    public int[] SearchForPossibleNumbersInColumn(int[] possibleNumbers) {
+    public int[] searchForPossibleNumbersInColumn(int[] possibleNumbers) {
         //search in row //Nummer J (z.b. 5) wird als index 4 gespeichert (deshalb J -1) weil index 4 wenn wir wieder auslesen +1 machen um die zahl zu bekommen
         for (int i = 0; i < 9; i++) {
             for (int j = 1; j < 10; j++) {
@@ -134,4 +139,6 @@ public class Solver {
         }
         return possibleNumbers;
     }
+
+
 }
