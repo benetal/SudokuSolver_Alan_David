@@ -1,5 +1,5 @@
 .borderPane {
-    -fx-background-color:white ;
+    -fx-background-color: white;
     -fx-pref-height: 670;
     -fx-pref-width: 750;
 
@@ -7,7 +7,7 @@
 
 .hbox {
 
-    -fx-background-color:white;
+    -fx-background-color: white;
     -fx-min-height: 0;
     -fx-min-width: 0;
     -fx-pref-width: 200;
@@ -18,7 +18,7 @@
 }
 
 .anchorPane {
-    -fx-background-color:white;
+    -fx-background-color: white;
     -fx-pref-height: 433;
     -fx-pref-width: 514;
 
@@ -31,7 +31,7 @@
 }
 
 .pane {
-    -fx-background-color:#708090;
+    -fx-background-color: #708090;
     -fx-pref-height: 433;
     -fx-pref-width: 514;
 }

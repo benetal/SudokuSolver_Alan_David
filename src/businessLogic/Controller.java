@@ -45,12 +45,61 @@ public class Controller {
 
     }
 
+    public void getFirstSudokuArray() throws URISyntaxException, IOException {
+
+        JSONObject json = new JSONObject(Files.readString(Paths.get(getClass().getResource("../unsolvedSudokus/sudoku.json").toURI())));
+        JSONArray sudokuMap = json.getJSONArray("sudokuMap");
+
+        int row = 0;
+        int column = 0;
+        for (Node gridToFill : getPane().getChildren()) {
+            if (gridToFill instanceof TextField) {
+                ((TextField) gridToFill).setText(String.valueOf(sudokuMap.getJSONArray(row).getInt(column)));
+                column++;
+                if (column == 9) {
+                    row++;
+                    column = 0;
+
+                }
+
+            }
+
+        }
+
+
+    }
+
     // Button which loads the second Sudoku Sample
     public void loadSecondSudoku() throws IOException, URISyntaxException {
 
         AddScene("../layouts/sudokuGridLayout.fxml");
         getSecondSudokuArray();
         solveButton.setDisable(false);
+
+    }
+
+    public void getSecondSudokuArray() throws URISyntaxException, IOException {
+
+        JSONObject json = new JSONObject(Files.readString(Paths.get(getClass().getResource("../unsolvedSudokus/sudoku.json").toURI())));
+        JSONArray sudokuMap2 = json.getJSONArray("sudokuMap2");
+
+        int row = 0;
+        int column = 0;
+
+        for (Node gridToFill : getPane().getChildren()) {
+            if (gridToFill instanceof TextField) {
+                ((TextField) gridToFill).setText(String.valueOf(sudokuMap2.getJSONArray(row).getInt(column)));
+                column++;
+                if (column == 9) {
+                    row++;
+                    column = 0;
+                }
+
+            }
+
+
+        }
+
 
     }
 
@@ -64,7 +113,7 @@ public class Controller {
                 anchorpane = ((AnchorPane) borderPane);
             }
         }
-        // get Pane from AnchorPane
+
         Pane pane = null;
         for (Node anchorPane : anchorpane.getChildren()) {
             if (anchorPane instanceof Pane) {
@@ -94,7 +143,7 @@ public class Controller {
     }
 
 
-    public void getFilledSudokuArray() {
+    private void getFilledSudokuArray() {
 
         int row = 0;
         int column = 0;
@@ -112,7 +161,7 @@ public class Controller {
     }
 
     // Solves and fills the Sudoku in the Grid
-    public void fillSolvedSudoku() {
+    private void fillSolvedSudoku() {
 
         Solver sudokuSolver = new Solver(currentSudoku);
         int[][] solvedSudoku;
@@ -132,59 +181,6 @@ public class Controller {
                 }
             }
         }
-        System.out.println(solvedSudoku);
     }
-
-
-    public void getFirstSudokuArray() throws URISyntaxException, IOException {
-
-        JSONObject json = new JSONObject(Files.readString(Paths.get(getClass().getResource("../unsolvedSudokus/sudoku.json").toURI())));
-        JSONArray sudokuMap = json.getJSONArray("sudokuMap");
-
-        int row = 0;
-        int column = 0;
-        for (Node gridToFill : getPane().getChildren()) {
-            if (gridToFill instanceof TextField) {
-                ((TextField) gridToFill).setText(String.valueOf(sudokuMap.getJSONArray(row).getInt(column)));
-                column++;
-                if (column == 9) {
-                    row++;
-                    column = 0;
-
-                }
-
-            }
-
-        }
-
-
-    }
-
-
-    public void getSecondSudokuArray() throws URISyntaxException, IOException {
-
-        JSONObject json = new JSONObject(Files.readString(Paths.get(getClass().getResource("../unsolvedSudokus/sudoku.json").toURI())));
-        JSONArray sudokuMap2 = json.getJSONArray("sudokuMap2");
-
-        int row = 0;
-        int column = 0;
-
-        for (Node gridToFill : getPane().getChildren()) {
-            if (gridToFill instanceof TextField) {
-                ((TextField) gridToFill).setText(String.valueOf(sudokuMap2.getJSONArray(row).getInt(column)));
-                column++;
-                if (column == 9) {
-                    row++;
-                    column = 0;
-                }
-
-            }
-
-
-        }
-
-
-    }
-
 
 }
