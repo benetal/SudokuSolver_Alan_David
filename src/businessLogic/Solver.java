@@ -28,6 +28,7 @@ public class Solver {
     // Return solved Sudoku Method
     public int[][] returnSolvedSudoku() {
         startSolving();
+        logger.debug("Sudoku is fully solved");
         return solvedArray;
 
     }
@@ -44,7 +45,6 @@ public class Solver {
             for (int i = 0; i < 10; i++) {
                 if (!isANumberZero) {
                     solvedArray = attemptingToSolveArray;
-                    logger.debug("Sudoku is fully solved");
                 } else if (possibleNumbersWhileSolving[i] == 0) { //put a valid number in empty Array
                     attemptingToSolveArray[row][column] = i + 1;
                     searchForNumbersMethods(new int[]{0, 0, 1, 0, 1, 0, 0, 1, 1, 1});
@@ -54,7 +54,6 @@ public class Solver {
                     column = columnSolver;
                     attemptingToSolveArray[rowSolver][columnSolver] = 0;
                     logger.debug("wrong number, one step back");
-
                 }
             }
 
