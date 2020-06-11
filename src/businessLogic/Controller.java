@@ -36,7 +36,7 @@ public class Controller {
     int column = 0;
 
 
-
+    // Button which loads the first Sudoku Sample
     public void loadFirstSudoku() throws IOException, URISyntaxException {
 
         AddScene("../layouts/sudokuGridLayout.fxml");
@@ -45,7 +45,7 @@ public class Controller {
 
     }
 
-
+    // Button which loads the second Sudoku Sample
     public void loadSecondSudoku() throws IOException, URISyntaxException {
 
         AddScene("../layouts/sudokuGridLayout.fxml");
@@ -56,6 +56,7 @@ public class Controller {
 
 
     private Pane getPane() {
+
 
         AnchorPane anchorpane = null;
         for (Node borderPane : borderPane.getChildren()) {
@@ -74,6 +75,7 @@ public class Controller {
         return pane;
     }
 
+    // Adds the SudokuGridLayout to the BorderPane
     private void AddScene(String additionalScene) throws IOException {
         AnchorPane anchorpane;
         FXMLLoader loader = new FXMLLoader();
@@ -83,18 +85,16 @@ public class Controller {
 
     }
 
-
-
+    // Button which replaces the Sample Sudoku and solves it
     public void handleSolveAction() {
 
-        fillSudoku();
+        getFilledSudokuArray();
         fillSolvedSudoku();
 
     }
 
 
-    public void fillSudoku() {
-
+    public void getFilledSudokuArray() {
 
         int row = 0;
         int column = 0;
@@ -111,6 +111,7 @@ public class Controller {
         }
     }
 
+    // Solves and fills the Sudoku in the Grid
     public void fillSolvedSudoku() {
 
         Solver sudokuSolver = new Solver(currentSudoku);
@@ -130,8 +131,10 @@ public class Controller {
                     column = 0;
                 }
             }
-        } System.out.println(solvedSudoku);
+        }
+        System.out.println(solvedSudoku);
     }
+
 
     public void getFirstSudokuArray() throws URISyntaxException, IOException {
 
@@ -156,6 +159,7 @@ public class Controller {
 
 
     }
+
 
     public void getSecondSudokuArray() throws URISyntaxException, IOException {
 

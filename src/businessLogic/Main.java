@@ -23,19 +23,19 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         Main.primaryStage = primaryStage;
         Main.primaryStage.setTitle("Sudoku Solver");
-        Main.primaryStage.getIcons().add(new Image("resources/sudokupic.png"));
+        Main.primaryStage.getIcons().add(new Image("image/sudokupic.png"));
         initRootLayout();
 
     }
 
     public void initRootLayout() {
         try {
-            // Load root layout from fxml file.
+            // Load rootLayout.fxml
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../layouts/rootLayout.fxml"));
             rootLayout = loader.load();
 
-            // Show the scene containing the root layout.
+            // Show the scene containing the rootLayout.fxml
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();

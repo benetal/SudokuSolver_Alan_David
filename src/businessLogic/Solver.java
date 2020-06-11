@@ -1,5 +1,6 @@
 package businessLogic;
 
+
 public class Solver {
     public int row = 0;
     public int column = 0;
@@ -7,47 +8,49 @@ public class Solver {
     boolean isANumberZero;
     public int[][] attemptingToSolveArray;
     public int[][] solvedArray;
-    boolean isPossible;
 
 
-    //get Array from Controller
+    // Get Array from Controller
     public Solver(int[][] sudokuArrayToSolve) {
         attemptingToSolveArray = sudokuArrayToSolve;
     }
 
+    // For Unit testing
     public Solver() {
 
     }
 
 
-    //return solved Sudoku Method
+    // Return solved Sudoku Method
     public int[][] returnSolvedSudoku() {
         startSolving();
         return solvedArray;
+
     }
 
-    //this Method starts the Solving and includes Backtracking
+    // This Method starts the Solving and includes Backtracking
     public boolean startSolving() {
         int rowSolver = row;
         int columnSolver = column;
         int[] possibleNumbersWhileSolving = {0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
-        SearchForEmptyNumberInArray();
+        searchForEmptyNumberInArray();
         if (isANumberZero) {
             possibleNumbers = possibleNumbersWhileSolving;
-            possibleNumbersWhileSolving = SearchForNumbersMethods(new int[]{0, 0, 1, 0, 1, 0, 0, 1, 1, 1});
+            possibleNumbersWhileSolving = searchForNumbersMethods(new int[]{0, 0, 1, 0, 1, 0, 0, 1, 1, 1});
             for (int i = 0; i < 10; i++) {
                 if (!isANumberZero) {
                     solvedArray = attemptingToSolveArray;
                 } else if (possibleNumbersWhileSolving[i] == 0) { //put a valid number in empty Array
                     attemptingToSolveArray[row][column] = i + 1;
-                    SearchForNumbersMethods(new int[]{0, 0, 1, 0, 1, 0, 0, 1, 1, 1});
+                    searchForNumbersMethods(new int[]{0, 0, 1, 0, 1, 0, 0, 1, 1, 1});
                     startSolving();
                 } else if (i == 9) { // if we cant fit a number then go to last Array and set Number to zero
                     row = rowSolver;
                     column = columnSolver;
                     attemptingToSolveArray[rowSolver][columnSolver] = 0;
                 } else if (!isANumberZero && row == 8 && column == 8 && i == 9) { // reached the end of Sudoku , its fully filled and we had nothing to add (seems to be full)
-                    System.out.println("reached the end of Sudoku");
+
+
                 }
             }
 
@@ -57,8 +60,8 @@ public class Solver {
         return false;
     }
 
-    //this method searches for the first empty Array in Sudoku
-    public boolean SearchForEmptyNumberInArray() {
+    // This method searches for the first empty Array in Sudoku
+    public boolean searchForEmptyNumberInArray() {
         outer:
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -67,6 +70,7 @@ public class Solver {
                     column = j;
                     isANumberZero = true;
                     break outer;
+
                 }
                 isANumberZero = false;
             }
@@ -75,16 +79,16 @@ public class Solver {
     }
 
 
-    //the following three methods in SearchForNumberMethods do the same thing as in real life we search in row/column and 3by3 grid for (a) possible number(s)
-    public int[] SearchForNumbersMethods(int[] ints) {
-        possibleNumbers = SearchForPossibleNumbersInRow(possibleNumbers);
+    // The following three methods in SearchForNumberMethods do the same thing as in real life we search in row/column and 3by3 grid for (a) possible number(s)
+    public int[] searchForNumbersMethods(int[] ints) {
+        possibleNumbers = searchForPossibleNumbersInRow(possibleNumbers);
         possibleNumbers = searchForPossibleNumbersInColumn(possibleNumbers);
         possibleNumbers = searchForPossibleNumbersInThreeByThree(getThreeByThree(row), getThreeByThree(column), possibleNumbers);
         return possibleNumbers;
     }
 
-    public int[] SearchForPossibleNumbersInRow(int[] possibleNumbers) {
-        //search in row
+    public int[] searchForPossibleNumbersInRow(int[] possibleNumbers) {
+        // Search in row
         for (int i = 0; i < 9; i++) {
             for (int j = 1; j < 10; j++) {
                 if (attemptingToSolveArray[row][i] == j) {
@@ -97,20 +101,20 @@ public class Solver {
     }
 
     public int[] searchForPossibleNumbersInColumn(int[] possibleNumbers) {
-        //search in row //Nummer J (z.b. 5) wird als index 4 gespeichert (deshalb J -1) weil index 4 wenn wir wieder auslesen +1 machen um die zahl zu bekommen
+        // Search in row // Nummer J (z.b. 5) wird als index 4 gespeichert (deshalb J -1) weil index 4 wenn wir wieder auslesen +1 machen um die zahl zu bekommen
         for (int i = 0; i < 9; i++) {
             for (int j = 1; j < 10; j++) {
                 if (attemptingToSolveArray[i][column] == j) {
                     possibleNumbers[j - 1] = 1;
                     break;
-//                    System.out.println("row: " + i + ", column " + column + " number" + j + " posbbilenumber" + possibleNumbers.toString());
+
                 }
             }
         }
         return possibleNumbers;
     }
 
-    // this is needed to make sure we search in the right 3by3 grid
+    // This is needed to make sure we search in the right 3by3 grid
     public int getThreeByThree(int indexNumber) {
         // index[3(row)][3(column)]
         if (indexNumber >= 0 && indexNumber <= 2) {
@@ -130,7 +134,7 @@ public class Solver {
                 if (loader != 0) {
                     for (int k = 1; k < 10; k++) {
                         if (loader == k) {
-                            possibleNumbers[k - 1] = 1; //Nummer k (z.b. 5) wird als index 4 gespeichert (deshalb J -1) weil index 4 wenn wir wieder auslesen +1 machen um die zahl zu bekommen
+                            possibleNumbers[k - 1] = 1; // Nummer k (z.b. 5) wird als index 4 gespeichert (deshalb J -1) weil index 4 wenn wir wieder auslesen +1 machen um die zahl zu bekommen
                             break;
                         }
                     }

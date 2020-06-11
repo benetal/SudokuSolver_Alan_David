@@ -1,11 +1,9 @@
 package unitTests;
 
-import org.junit.Before;
+
 import org.junit.jupiter.api.Test;
 import businessLogic.Solver;
 
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,9 +12,9 @@ class SolverTest {
 
     public int[][] solvedArrayTest = new int[9][9];
 
-
+    //NullPointerException at the moment (in progression)
     @Test
-    void returnSolvedSudokuTest() {
+    void testIfSolvedArrayIsTrue() {
 
         Solver solverTest = new Solver();
 
@@ -37,39 +35,9 @@ class SolverTest {
 
     }
 
-
+    //Test passed
     @Test
-    void startSolving() {
-
-
-    }
-
-    @Test
-    void searchForEmptyNumberInArray() {
-
-
-    }
-
-    @Test
-    void searchForNumbersMethods() {
-
-
-    }
-
-    @Test
-    void searchForPossibleNumbersInRow() {
-
-
-    }
-
-    @Test
-    void searchForPossibleNumbersInColumn() {
-
-
-    }
-
-    @Test
-    void expectedThreeByThreeTest() {
+    void testExpectedThreeByThreeIsTrue() {
 
         Solver testSolver = new Solver();
 
