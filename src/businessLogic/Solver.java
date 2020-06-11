@@ -48,9 +48,6 @@ public class Solver {
                     row = rowSolver;
                     column = columnSolver;
                     attemptingToSolveArray[rowSolver][columnSolver] = 0;
-                } else if (!isANumberZero && row == 8 && column == 8 && i == 9) { // reached the end of Sudoku , its fully filled and we had nothing to add (seems to be full)
-
-
                 }
             }
 
@@ -92,7 +89,7 @@ public class Solver {
         for (int i = 0; i < 9; i++) {
             for (int j = 1; j < 10; j++) {
                 if (attemptingToSolveArray[row][i] == j) {
-                    possibleNumbers[j - 1] = 1;//Nummer J (z.b. 5) wird als index 4 gespeichert (deshalb J -1) weil index 4 wenn wir wieder auslesen +1 machen um die zahl zu bekommen
+                    possibleNumbers[j - 1] = 1; // Number J (example nr. 5) gets safed at index 4 --> [j-1] when we read again ad +1 to get the number 5 [j+1]
                     break;
                 }
             }
@@ -101,11 +98,11 @@ public class Solver {
     }
 
     public int[] searchForPossibleNumbersInColumn(int[] possibleNumbers) {
-        // Search in row // Nummer J (z.b. 5) wird als index 4 gespeichert (deshalb J -1) weil index 4 wenn wir wieder auslesen +1 machen um die zahl zu bekommen
+        // Search in column
         for (int i = 0; i < 9; i++) {
             for (int j = 1; j < 10; j++) {
                 if (attemptingToSolveArray[i][column] == j) {
-                    possibleNumbers[j - 1] = 1;
+                    possibleNumbers[j - 1] = 1; // Number J (example nr. 5) gets safed at index 4 --> [j-1] when we read again ad +1 to get the number 5 [j+1]
                     break;
 
                 }
@@ -134,7 +131,7 @@ public class Solver {
                 if (loader != 0) {
                     for (int k = 1; k < 10; k++) {
                         if (loader == k) {
-                            possibleNumbers[k - 1] = 1; // Nummer k (z.b. 5) wird als index 4 gespeichert (deshalb J -1) weil index 4 wenn wir wieder auslesen +1 machen um die zahl zu bekommen
+                            possibleNumbers[k - 1] = 1; // Number J (example nr. 5) gets safed at index 4 --> [j-1] when we read again ad +1 to get the number 5 [j+1]
                             break;
                         }
                     }
