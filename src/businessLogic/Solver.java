@@ -1,6 +1,9 @@
 package businessLogic;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Solver {
     public int row = 0;
     public int column = 0;
@@ -9,6 +12,7 @@ public class Solver {
     public int[][] attemptingToSolveArray;
     public int[][] solvedArray;
 
+    final Logger logger = LoggerFactory.getLogger(Solver.class);
 
     // Get Array from Controller
     public Solver(int[][] sudokuArrayToSolve) {
@@ -40,6 +44,7 @@ public class Solver {
             for (int i = 0; i < 10; i++) {
                 if (!isANumberZero) {
                     solvedArray = attemptingToSolveArray;
+                    logger.debug("Sudoku is fully solved");
                 } else if (possibleNumbersWhileSolving[i] == 0) { //put a valid number in empty Array
                     attemptingToSolveArray[row][column] = i + 1;
                     searchForNumbersMethods(new int[]{0, 0, 1, 0, 1, 0, 0, 1, 1, 1});
@@ -48,6 +53,8 @@ public class Solver {
                     row = rowSolver;
                     column = columnSolver;
                     attemptingToSolveArray[rowSolver][columnSolver] = 0;
+                    logger.debug("wrong number, one step back");
+
                 }
             }
 
