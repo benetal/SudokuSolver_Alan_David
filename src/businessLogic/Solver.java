@@ -35,7 +35,7 @@ public class Solver {
         if (isANumberZero) {
             possibleNumbers = possibleNumbersWhileSolving;
             possibleNumbersWhileSolving = SearchForNumbersMethods(new int[]{0, 0, 1, 0, 1, 0, 0, 1, 1, 1});
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 10; i++) { // if there is no empty field save Sudoku in solvedArray
                 if (!isANumberZero) {
                     solvedArray = attemptingToSolveArray;
                 } else if (possibleNumbersWhileSolving[i] == 0) { //put a valid number in empty Array
@@ -46,8 +46,6 @@ public class Solver {
                     row = rowSolver;
                     column = columnSolver;
                     attemptingToSolveArray[rowSolver][columnSolver] = 0;
-                } else if (!isANumberZero && row == 8 && column == 8 && i == 9) { // reached the end of Sudoku , its fully filled and we had nothing to add (seems to be full)
-                    System.out.println("reached the end of Sudoku");
                 }
             }
 
